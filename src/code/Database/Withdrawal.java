@@ -57,12 +57,12 @@ public class Withdrawal extends Transaction
             if ( amount.getValore() <= availableBalance.getValore() )
             {   
                // check whether the cash dispenser has enough money
-               if ( cashDispenser.isSufficientCashAvailable( (int)amount.getValore() ) )
+               if ( cashDispenser.isSufficientCashAvailable( (int) (amount.getValore()/100) ) )
                {
                   // update the account involved to reflect withdrawal
                   bankDatabase.debit( getAccountNumber(), amount );
                   
-                  cashDispenser.dispenseCash( (int)amount.getValore() ); // dispense cash
+                  cashDispenser.dispenseCash( (int) (amount.getValore()/100) ); // dispense cash
                   cashDispensed = true; // cash was dispensed
 
                   // instruct user to take cash
@@ -106,11 +106,11 @@ public class Withdrawal extends Transaction
       {
          // display the menu
          screen.displayMessageLine( "\nWithdrawal Menu:" );
-         screen.displayMessageLine( "1 - $20" );
-         screen.displayMessageLine( "2 - $40" );
-         screen.displayMessageLine( "3 - $60" );
-         screen.displayMessageLine( "4 - $100" );
-         screen.displayMessageLine( "5 - $200" );
+         screen.displayMessageLine( "1 - 20 euro" );
+         screen.displayMessageLine( "2 - 40 euro" );
+         screen.displayMessageLine( "3 - 60 euro" );
+         screen.displayMessageLine( "4 - 100 euro" );
+         screen.displayMessageLine( "5 - 200 euro" );
          screen.displayMessageLine( "6 - Cancel transaction" );
          screen.displayMessage( "\nChoose a withdrawal amount: " );
 
