@@ -1,5 +1,6 @@
-public class Euro {
+package code.Business_Logic;
 
+public class Euro {
 
 	private long valore;
 
