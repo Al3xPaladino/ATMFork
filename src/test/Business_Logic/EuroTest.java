@@ -1,6 +1,7 @@
 package test.Business_Logic;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -47,6 +48,9 @@ public class EuroTest {
 
     @Test
     public void testUgualeA() {
+        Euro ex1 = new Euro(42f);
+        Euro ex2 = new Euro(42.3f);
 
+        assertFalse(ex1.equals(ex2));
     }
 }
