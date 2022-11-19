@@ -33,7 +33,7 @@ public class Deposit extends Transaction
       BankDatabase bankDatabase = getBankDatabase(); // get reference
       Screen screen = getScreen(); // get reference
 
-      amount = new Euro(promptForDepositAmount()); // get deposit amount from user
+      amount = promptForDepositAmount(); // get deposit amount from user
 
       // check whether user entered a deposit amount or canceled
       if ( amount.getValore()!= CANCELED )
@@ -71,7 +71,7 @@ public class Deposit extends Transaction
    } // end method execute
 
    // prompt user to enter a deposit amount in cents 
-   private double promptForDepositAmount()
+   private Euro promptForDepositAmount()
    {
       Screen screen = getScreen(); // get reference to screen
 
@@ -81,12 +81,13 @@ public class Deposit extends Transaction
       int input = keypad.getInput(); // receive input of deposit amount
       
       // check whether the user canceled or entered a valid amount
-      if ( input == CANCELED ) 
-         return CANCELED;
-      else
-      {
-         return ( double ) input / 100; // return dollar amount 
-      } // end else
+      if(input>=0)
+         return new Euro(input);
+      else{
+         screen.displayMessageLine( "\nERROR: deposit amount must be positive..." );
+         return new Euro(CANCELED);
+       } // return Euro amount 
+      // end else
    } // end method promptForDepositAmount
 } // end class Deposit
 
