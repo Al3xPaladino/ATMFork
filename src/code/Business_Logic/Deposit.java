@@ -83,7 +83,7 @@ public class Deposit extends Transaction
       
       // check whether the user canceled or entered a valid amount
       if(input>=0)
-         return new Euro(input);
+         return new Euro(0,input);
       else{
          screen.displayMessageLine( "\nERROR: deposit amount must be positive..." );
          return new Euro(CANCELED);
