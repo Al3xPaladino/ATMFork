@@ -1,12 +1,14 @@
-package code.Database;
+package code.Business_Logic;
 // Withdrawal.java
 // Represents a withdrawal ATM transaction
+
+import code.Database.BankDatabase;
+import code.GUI.CashDispenser;
 
 // Da controllare, conversione implicita a int a riga 60 e 65
 
 import code.GUI.Keypad;
 import code.GUI.Screen;
-import code.Business_Logic.Euro;
 
 public class Withdrawal extends Transaction
 {
